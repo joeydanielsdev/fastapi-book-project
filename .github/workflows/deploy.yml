@@ -1,0 +1,24 @@
+name: Deployment Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t fastapi-app .
+
+      # Example: Insert deployment commands for your hosting provider below.
+      - name: Deploy Application
+        run: |
+          echo "Deploying application..."
+          # Example deployment commands:
+          # docker push your-docker-repo/fastapi-app:latest
+          # ssh user@server "docker pull your-docker-repo/fastapi-app:latest && docker-compose up -d"
